@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Сайт-визитка Елены Джиоевой. Тексты помечены комментариями «✎ ТЕКСТ». Меняйте только текст между тегами. -->
+<title>Елена Джиоева</title>
+<meta name="description" content="Елена Джиоева — юрист, кандидат юридических наук, специалист в области частного права: договоры, хозяйственные споры, обучение.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+
+/* Layout: a page of a legal commentary. A narrow left margin carries norm references (marginalia) beside the main text column. */
+:root{
+  --bg:#eef0f0; --surface:#e2e6e7; --fg:#1c2125; --muted:#59636a; --rule:#c6cdd0; --accent:#1d5948; --accent-soft:rgba(29,89,72,.09); --block:#16392f; --on-block:#f0f2ee; --on-block-muted:rgba(240,242,238,.64);
+  --f-display:"Prata","Georgia","Times New Roman",serif;
+  --f-body:"Golos Text","Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+  --margin-col:11.5rem; --wrap:70rem;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14181b; --surface:#1d2327; --fg:#e6e9ea; --muted:#99a3a9; --rule:#323b41; --accent:#7cc1aa; --accent-soft:rgba(124,193,170,.12); --block:#123129; --on-block:#e9efec; --on-block-muted:rgba(233,239,236,.62); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14181b; --surface:#1d2327; --fg:#e6e9ea; --muted:#99a3a9; --rule:#323b41; --accent:#7cc1aa; --accent-soft:rgba(124,193,170,.12); --block:#123129; --on-block:#e9efec; --on-block-muted:rgba(233,239,236,.62); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:1.0625rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:clamp(1rem,4vw,2.5rem)}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.85rem}
+.mark{font-family:var(--f-display);font-size:1.05rem;text-decoration:none;letter-spacing:.01em}
+.top nav{display:flex;gap:clamp(.9rem,3vw,2rem);flex-wrap:wrap}
+.top nav a{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--accent)}
+
+/* Hero */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(2rem,6vw,5rem);align-items:end;padding-block:clamp(2.5rem,7vw,5.5rem) clamp(2.5rem,6vw,4.5rem)}
+.eyebrow{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 1.4rem}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(3rem,9vw,6.4rem);line-height:.98;letter-spacing:-.01em;margin:0 0 1.8rem;text-wrap:balance}
+h1 span{display:block}
+h1 span+span{padding-left:clamp(1.5rem,6vw,4.5rem)}
+.lead{font-size:clamp(1.12rem,1.8vw,1.3rem);line-height:1.55;max-width:34ch;margin:0 0 2.2rem}
+.lead:has(+ .sublead){margin-bottom:.7rem}
+.sublead{color:var(--muted);max-width:40ch;margin:0 0 2.2rem}
+.facts{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;margin:0;padding:1.2rem 0 0;border-top:1px solid var(--rule);list-style:none}
+.facts li{display:flex;flex-direction:column;min-width:0}
+.facts b{font-family:var(--f-display);font-weight:400;font-size:1.6rem;line-height:1.2}
+.facts span{font-size:.86rem;color:var(--muted)}
+.portrait{margin:0;position:relative;max-width:24rem;justify-self:end;width:100%}
+.portrait img{display:block;width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;max-width:100%;filter:saturate(.92)}
+.portrait figcaption{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted);margin-top:.6rem;text-align:right}
+.portrait::before{content:"";position:absolute;inset:-.85rem .85rem .85rem -.85rem;border:1px solid var(--accent);z-index:-1;opacity:.55}
+
+/* Sections */
+section.block{border-top:1px solid var(--rule)}
+section.block>.wrap{padding-block:clamp(3rem,7vw,5.5rem)}
+.sec-head{display:grid;grid-template-columns:var(--margin-col) minmax(0,1fr);gap:2rem;margin-bottom:clamp(1.8rem,4vw,2.8rem);align-items:baseline}
+.sec-head .label{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+h2{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,4.4vw,3rem);line-height:1.1;margin:0;text-wrap:balance}
+.intro{display:grid;grid-template-columns:var(--margin-col) minmax(0,1fr);gap:2rem;margin-bottom:clamp(2rem,5vw,3.2rem)}
+.intro p{grid-column:2;margin:0;max-width:62ch;font-size:1.12rem}
+
+.entries{list-style:none;margin:0;padding:0;display:grid}
+.entry{display:grid;grid-template-columns:var(--margin-col) minmax(0,1fr);gap:2rem;padding-block:1.6rem;border-top:1px dashed var(--rule)}
+.entry:last-child{border-bottom:1px dashed var(--rule)}
+.note{font-family:var(--f-mono);font-size:.76rem;line-height:1.5;color:var(--accent);padding-top:.45rem;min-width:0}
+.entry h3{font-family:var(--f-display);font-weight:400;font-size:1.5rem;line-height:1.25;margin:0 0 .45rem}
+.entry p{margin:0;max-width:60ch;color:var(--fg)}
+.entry .body{min-width:0}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3rem)}
+.formats{list-style:none;margin:.6rem 0 0;padding:0;display:grid;gap:.55rem}
+.formats li{padding-left:1.3rem;position:relative}
+.formats li::before{content:"";position:absolute;left:0;top:.75em;width:.7rem;height:1px;background:var(--accent)}
+.kicker{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .5rem}
+
+.thesis{font-family:var(--f-display);font-size:clamp(1.45rem,2.8vw,2rem)!important;line-height:1.3;max-width:28ch!important;text-wrap:balance}
+.prose{display:grid;gap:1rem}
+.prose p{max-width:62ch}
+.status{list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+.status li{font-family:var(--f-display);font-size:1.25rem;line-height:1.35;padding-left:1.3rem;position:relative}
+.status li::before{content:"";position:absolute;left:0;top:.72em;width:.7rem;height:1px;background:var(--accent)}
+.ext{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);white-space:nowrap}
+.ext:hover{border-bottom-width:2px}
+.slogan{font-family:var(--f-display);font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.3;color:var(--accent);margin:-.6rem 0 1.6rem}
+.thesis{color:var(--accent)}
+.contact{background:var(--block)!important;color:var(--on-block)}
+.contact .note,.contact .channel dt{color:var(--on-block-muted)!important}
+.contact .channel .val{border-bottom-color:var(--on-block-muted);color:var(--on-block)}
+.contact .channel a.val:hover{color:var(--on-block);border-bottom-color:var(--on-block)}
+.contact .copy{border-color:var(--on-block-muted);color:var(--on-block)}
+.contact .copy:hover{border-color:var(--on-block);color:var(--on-block)}
+.facts .fact-line{display:block;max-width:34ch}
+.facts .fact-line b{font-size:1.6rem}
+.facts .fact-line span{display:inline;font-size:1.1rem;color:var(--fg);line-height:1.4}
+/* Placeholder for data still to be supplied */
+.todo{background:var(--accent-soft);border-bottom:1px dashed var(--accent);padding:0 .25em;color:var(--fg)}
+
+/* Contact */
+.contact{background:var(--surface)}
+.contact-grid{display:grid;grid-template-columns:var(--margin-col) minmax(0,1fr);gap:2rem}
+.contact-body{min-width:0}
+.contact-body .statement{font-family:var(--f-display);font-size:clamp(1.5rem,3.2vw,2.2rem);line-height:1.3;margin:0 0 2.2rem;max-width:30ch;text-wrap:balance}
+.channels{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:1rem 2.5rem;margin:0}
+.channel dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem}
+.channel dd{margin:0;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.channel .val{font-size:1.25rem;font-variant-numeric:tabular-nums;user-select:all;text-decoration:none;border-bottom:1px solid var(--accent)}
+.channel a.val:hover{color:var(--accent)}
+.copy{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;background:none;border:1px solid var(--rule);color:var(--muted);padding:.3rem .6rem;cursor:pointer}
+.copy:hover{border-color:var(--accent);color:var(--accent)}
+
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.6rem;font-size:.82rem;color:var(--muted)}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr)}
+  .portrait{justify-self:start;max-width:20rem;order:-1;margin-left:.85rem;margin-top:.85rem}
+  .sec-head,.intro,.entry,.contact-grid{grid-template-columns:minmax(0,1fr);gap:.4rem}
+  .intro p{grid-column:1}
+  .two{grid-template-columns:minmax(0,1fr)}
+  .note{padding-top:0}
+}
+@media (max-width:480px){.top nav a:first-child{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">Е. Джиоева</a>
+    <nav aria-label="Разделы">
+      <a href="#expertise">Экспертиза</a>
+      <a href="#teaching">Обучение</a>
+      <a href="#contact">Контакт</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Частное право</p>
+        <h1><span>Елена</span><span>Джиоева</span></h1>
+        <!-- ✎ ТЕКСТ: слоган под именем -->
+        <p class="slogan">Теория, проверенная практикой</p>
+        <!-- ✎ ТЕКСТ: строка под слоганом -->
+        <p class="lead">Юрист, специалист в области частного права. Правовое сопровождение бизнеса с опорой на доктрину и судебную практику.</p>
+        <!-- ✎ ТЕКСТ: регалии (серым) -->
+        <p class="sublead">Кандидат юридических наук, доцент кафедры гражданского права РГУП имени В.&nbsp;М.&nbsp;Лебедева.</p>
+        <!-- ✎ ТЕКСТ: «Более 25 лет…» -->
+        <ul class="facts">
+          <li class="fact-line"><b>Более 25 лет</b> <span>в юридической практике и обучении гражданскому праву</span></li>
+        </ul>
+      </div>
+      <figure class="portrait">
+        <img src="portrait.jpg" alt="Елена Джиоева, портрет" width="720" height="900">
+        <figcaption>Е. Джиоева, к.ю.н.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="expertise">
+    <div class="wrap">
+      <!-- ✎ ТЕКСТ: раздел «Экспертиза» — заголовок -->
+      <div class="sec-head"><span class="label">Экспертиза</span><h2>Правовое сопровождение бизнеса</h2></div>
+      <div class="intro">
+        <!-- ✎ ТЕКСТ: главный тезис -->
+        <p class="thesis">Помогаю бизнесу принимать решения, которые выдерживают проверку контрагентом и судом.</p>
+      </div>
+      <ul class="entries">
+        <li class="entry">
+          <!-- ✎ ТЕКСТ: два абзаца об экспертизе -->
+          <span class="note">ГК РФ · АПК РФ</span>
+          <div class="body prose">
+            <p>Более 25 лет я совмещаю юридическую практику и обучение гражданскому праву. Для компании это юрист, который видит сделку целиком: от переговоров и текста договора до того, как его условия прочитает арбитражный суд.</p>
+            <p>Сопровождаю отношения бизнеса с контрагентами, договорную работу и расчёты, вопросы интеллектуальной собственности. Представляю интересы компаний в хозяйственных спорах. Опыт арбитра позволяет смотреть на спор глазами того, кто его разрешает.</p>
+          </div>
+        </li>
+        <li class="entry">
+          <span class="note">Статус</span>
+          <div class="body">
+            <!-- ✎ ТЕКСТ: статусы (каждый пункт в <li>…</li>) -->
+            <ul class="status">
+              <li>Арбитр Российского арбитражного центра (РАЦ)</li>
+              <li>Член Консультативного совета Спортивной арбитражной палаты</li>
+              <li>Ревизор Федерации альпинизма России</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="teaching">
+    <div class="wrap">
+      <!-- ✎ ТЕКСТ: раздел «Обучение» — заголовок -->
+      <div class="sec-head"><span class="label">Обучение</span><h2>Обучение и публичная деятельность</h2></div>
+      <div class="intro">
+        <!-- ✎ ТЕКСТ: абзац об обучении -->
+        <p>Доцент кафедры гражданского права Российского государственного университета правосудия имени В.&nbsp;М.&nbsp;Лебедева. Читаю лекции и веду семинары по гражданскому праву на всех уровнях подготовки юриста: от бакалавриата и магистратуры до программ дополнительного профессионального образования, в том числе для представителей судебной системы.</p>
+      </div>
+      <div class="entries">
+        <div class="entry">
+          <span class="note">Научные интересы</span>
+          <div class="body two">
+            <div>
+              <!-- ✎ ТЕКСТ: научные интересы (каждый пункт в <li>…</li>) -->
+              <p class="kicker">Исследую</p>
+              <ul class="formats">
+                <li>Кауза договора: её влияние на заключённость, квалификацию и динамику договора</li>
+                <li>Источники правовой определённости в договорных отношениях</li>
+                <li>Неосновательное обогащение</li>
+              </ul>
+            </div>
+            <div>
+              <!-- ✎ ТЕКСТ: форматы участия -->
+              <p class="kicker">Открыта к участию</p>
+              <ul class="formats">
+                <li>Лекции и курсы повышения квалификации для юристов</li>
+                <li>Корпоративные семинары по договорной работе</li>
+                <li>Конференции, экспертные площадки, публичные проекты</li>
+                <li>Разборы судебной практики для предпринимателей в канале <a href="https://t.me/svoyadjioeva" target="_blank" rel="noopener">«Свой юрист для бизнеса»</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="entry">
+          <span class="note">Публикации</span>
+          <div class="body">
+            <!-- ✎ ТЕКСТ: публикации и ссылка на eLibrary -->
+            <p>Научные публикации собраны в профиле автора в Научной электронной библиотеке. <a class="ext" id="elibrary-link" href="https://elibrary.ru/author_items.asp?authorid=544672" target="_blank" rel="noopener">Публикации на eLibrary.ru&nbsp;→</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <span class="note" style="color:var(--muted)">Контакт</span>
+        <div class="contact-body">
+          <!-- ✎ ТЕКСТ: фраза в блоке контактов -->
+          <p class="statement">Открыта к профессиональному диалогу: практика, обучение, проекты.</p>
+          <!-- ✎ ТЕКСТ: контакты (телефон для кнопки «Копировать» — в data-copy) -->
+          <dl class="channels">
+            <div class="channel">
+              <dt>Telegram, лично</dt>
+              <dd><a class="val" href="https://t.me/elenadzhioeva" target="_blank" rel="noopener">@elenadzhioeva</a></dd>
+            </div>
+            <div class="channel">
+              <dt>Канал «Свой юрист для бизнеса»</dt>
+              <dd><a class="val" href="https://t.me/svoyadjioeva" target="_blank" rel="noopener">@svoyadjioeva</a></dd>
+            </div>
+            <div class="channel">
+              <dt>Телефон</dt>
+              <dd><span class="val" id="phone">+7 (903) 401-37-93</span><button class="copy" type="button" id="copy-phone" data-copy="+79034013793">Копировать</button></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ✎ ТЕКСТ: подвал -->
+<footer>
+  <div class="wrap"><span>© 2026 Елена Джиоева</span><span>Частное право</span></div>
+</footer>
+
+<script>
+document.getElementById('copy-phone').addEventListener('click', function(){
+  var btn=this, v=btn.getAttribute('data-copy');
+  function done(t){btn.textContent=t;setTimeout(function(){btn.textContent='Копировать'},1800)}
+  function fallback(){var r=document.createRange();r.selectNodeContents(document.getElementById('phone'));var s=getSelection();s.removeAllRanges();s.addRange(r);done('Выделено')}
+  try{navigator.clipboard.writeText(v).then(function(){done('Скопировано')},fallback)}catch(e){fallback()}
+});
+</script>
+</body>
+</html>
